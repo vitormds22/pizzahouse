@@ -18,15 +18,11 @@ Route::get('/', function () {
 });
 
 Route::get('/pizzas', function () {
-    //Imaginando pegar os valores do banco
-    $pizza =  [
-        'type' => 'hawaiian',
-        'base' => 'cheesy crust',
-        'price' => 10
+    $pizzas = [
+        ['type' => 'hawaiian', 'base' => 'cheesy crust'],
+        ['type' => 'volcano', 'base' => 'garlic crust'],
+        ['type' => 'veg supreme', 'base' => 'thin & crispy'],
     ];
-    return view('pizzas', $pizza);
-    //É possivel retornar qualquer coisa aqui, porém o mais comum é retornar a view mesmo
-    // return 'pizzas!';
-    // return ['name' => 'veg pizzas', 'base' => 'classic'];
+    return view('pizzas', ['pizzas' => $pizzas]);
 });
 
