@@ -4,8 +4,12 @@
 <div class="wrapper create-pizza">
     <h1>Create a new Pizza</h1>
     <form action="/pizzas" method="POST">
+        @csrf
         <label for="name">Your name: </label>
         <input type="text" id="name" name="name">
+
+        <label for="name">The price: </label>
+        <input type="text" id="price" name="price">
         
         <label for="type">Choose pizza type:</label>
         <select name="type" id="type">
@@ -16,7 +20,7 @@
         </select>
 
         <label for="base">Choose pizza type:</label>
-        <select name="type" id="type">
+        <select name="base" id="base">
             <option value="Cheesy Crust">Cheesy Crust</option>
             <option value="Garlic Crust">Garlic Crust</option>
             <option value="Thin & Crispy">Thin & Crispy</option>
