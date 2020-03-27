@@ -10,8 +10,8 @@ class PizzaController extends Controller
     public function index(){
 
         // $pizzas = Pizza::all();
-        // $pizzas = Pizza::orderBy('name')->get();
-        $pizzas = Pizza::where('type', 'hawaiian')->get();
+        $pizzas = Pizza::orderBy('name')->get();
+        // $pizzas = Pizza::where('type', 'hawaiian')->get();
 
 
         return view('pizzas.index', ['pizzas' => $pizzas]);
@@ -36,9 +36,17 @@ class PizzaController extends Controller
         $pizza->type = request('type');
         $pizza->base = request('base');
         $pizza->price = request('price');
-
+        $pizza->toppings = request('toppings');
+        
         $pizza->save();
 
         return redirect('/')->with('msg', 'Thanks for your order');
+    }
+
+    public function destroy($id) {
+        $pizza = Pizza::findOrFail($id)->get();
+        $pizza->delete();
+
+        return redirect('/');
     }
 }
